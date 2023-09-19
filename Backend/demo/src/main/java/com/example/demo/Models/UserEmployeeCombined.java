@@ -1,80 +1,52 @@
 package com.example.demo.Models;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "user_employee_combined")
+public class UserEmployeeCombined {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "suffix")
+    // Fields from the User class
     private String suffix;
-
-    @Column(name = "firstname")
     private String firstname;
-
-    @Column(name = "middlename")
     private String middlename;
-
-    @Column(name = "lastname")
     private String lastname;
-
-    @Column(name = "gender")
     private String gender;
-
-    @Column(name="dob")
     private LocalDate dob;
-
-    @Column(name = "role")
     private String role;
-
-    @Column(name = "location")
     private String location;
-
-    @Column(name = "number")
     private String number;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "address")
     private String address;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "state")
     private String state;
-
-    @Column(name = "zip")
     private String zip;
-
-    @Column(name = "comments")
     private String comments;
 
-//    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn
-//    private EmployeeInformation employee;
+    // Fields from the EmployeeInformation class
+    private LocalDate dateOfJoining;
+    private String yearsOfExperience;
+    private String relevantCertifications;
+    private String employeeRole; // Renamed to avoid conflict with User's 'role' field
+    private String employeeLocation; // Renamed to avoid conflict with User's 'location' field
+    private double salary;
+    private String isFullTime;
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private EmployeeInformation employeeInformation;
-
-    public User() {
+    public UserEmployeeCombined() {
     }
 
-    public long getId() {
+    // Getters and setters for all fields
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -198,49 +170,59 @@ public class User implements Serializable {
         this.comments = comments;
     }
 
-//    public EmployeeInformation getEmployeeInformation() {
-//        return employeeInformation;
-//    }
-
-//    public void setEmployeeInformation(EmployeeInformation employeeInformation) {
-//        this.employeeInformation = employeeInformation;
-//        if (employeeInformation != null) {
-//            employeeInformation.setUser(this);
-//        }
-//    }
-
-    // You can also add a static method for deserialization from JSON
-    public static User fromJson(String json) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, User.class);
+    public LocalDate getDateOfJoining() {
+        return dateOfJoining;
     }
 
-    // You can also add a method to serialize the object to JSON
-    public String toJson() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        return objectMapper.writeValueAsString(this);
+    public void setDateOfJoining(LocalDate dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", suffix='" + suffix + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", middlename='" + middlename + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dob=" + dob +
-                ", role='" + role + '\'' +
-                ", location='" + location + '\'' +
-                ", number='" + number + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
-                ", comments='" + comments + '\'' +
-                '}';
+    public String getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(String yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    public String getRelevantCertifications() {
+        return relevantCertifications;
+    }
+
+    public void setRelevantCertifications(String relevantCertifications) {
+        this.relevantCertifications = relevantCertifications;
+    }
+
+    public String getEmployeeRole() {
+        return employeeRole;
+    }
+
+    public void setEmployeeRole(String employeeRole) {
+        this.employeeRole = employeeRole;
+    }
+
+    public String getEmployeeLocation() {
+        return employeeLocation;
+    }
+
+    public void setEmployeeLocation(String employeeLocation) {
+        this.employeeLocation = employeeLocation;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getIsFullTime() {
+        return isFullTime;
+    }
+
+    public void setIsFullTime(String isFullTime) {
+        this.isFullTime = isFullTime;
     }
 }

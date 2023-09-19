@@ -1,7 +1,11 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Models.User;
+import com.example.demo.Models.EmployeeInformation;
+import com.example.demo.Models.UserEmployeeCombined;
 import com.example.demo.Publish.PublishController;
+import com.example.demo.Repo.EmployeeInformationRepo;
+import com.example.demo.Repo.UserEmployeeCombinedRepository;
 import com.example.demo.Repo.UserRepo;
 //import com.example.demo.consumer.MessageDatabase;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -22,10 +28,34 @@ public class Apicontrollers {
     private UserRepo userRepo;
 
     @Autowired
+    private EmployeeInformationRepo employeeRepo;
+
+    @Autowired
     private PublishController publishController;
     @Autowired
     private JmsTemplate jmsTemplate;
 
+    @Autowired
+    private UserEmployeeCombinedRepository repository;
+//
+//    @GetMapping(value="/combined")
+//    public List<UserEmployeeCombined> getAllUserEmployeeData() {
+//        return repository.getUserEmployeeData();
+//    }
+
+    @Autowired
+    private UserEmployeeService userEmployeeService;
+
+    //@GetMapping("/saveData")
+    public String saveDataFromSQLQuery() {
+        userEmployeeService.saveDataFromSQLQuery();
+        return "Data saved successfully!";
+    }
+    @GetMapping("/viewData")
+    public List<UserEmployeeCombined> viewAllUserEmployeeData() {
+        userEmployeeService.saveDataFromSQLQuery();
+        return userEmployeeService.getAllUserEmployeeData();
+    }
     @Value("${activemq.queue.name}")
     private String dataQueueName;
 
@@ -71,30 +101,25 @@ public class Apicontrollers {
         }
     }
 
-//        publishController.publishMessage(user);
-//        userRepo.save(user);
-//        return ResponseEntity.ok("{\"message\": \"User saved successfully\"}"); // Return a response message
-//    }
+    @CrossOrigin
+    @PostMapping(value = "/saveemployee", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> saveUser(@RequestBody EmployeeInformation user) {
+        try {
 
-//    @CrossOrigin
-//    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<String> saveUser(@RequestBody User user) {
-//        userRepo.save(user);
+            //jmsTemplate.convertAndSend("DataQueue", user);
+//            jmsTemplate.convertAndSend(dataQueueName, user);
+
+            employeeRepo.save(user);
+            saveDataFromSQLQuery();
+            return ResponseEntity.ok("{\"message\": \"Employee Details saved successfully\"}");
 //
-//        // Convert the User object to JSON
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        try {
-//            String userJson = objectMapper.writeValueAsString(user);
-//
-//            // Call the MessageSender class
-//            messageSender.sendMessageToQueue(userJson);
-//
-//            return ResponseEntity.ok("{\"message\": \"User saved successfully and message sent to the queue\"}");
-//        } catch (JsonProcessingException | JMSException e) {
-//            e.printStackTrace();
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"Error while processing JSON\"}");
-//        }
-//    }
+//            //return new ResponseEntity<>("Sent.", HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 //    @PostMapping(value="/save")
 //    public void saveUser(@RequestBody User user){
@@ -123,8 +148,18 @@ public class Apicontrollers {
     @DeleteMapping (value="delete/{id}")
     public String deleteUser(@PathVariable long id){
         User updatedUser= userRepo.findById(id).get();
+        EmployeeInformation Employee=employeeRepo.findById(id).get();
         userRepo.delete(updatedUser);
+        employeeRepo.delete(Employee);
         return "Deleted";
     }
-
+//    @RequestMapping(method = RequestMethod.GET, value = "/api/simplifyingtech")
+//    public String getRequest() {
+//        return "Swagger Hello World from Spring...";
+//    }
+//
+//    @PostMapping("/api/posts")
+//    public String postRequest(@RequestBody String yourName) {
+//        return "Hello " + yourName;
+//    }
 }

@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         lastname: form.lastname.value,
         gender: form.gender.value,
         dob: form.dob.value,
-        role: form.role.value,
-        location: form.location.value,
         number: form.number.value,
         email: form.email.value,
         address: form.address.value,
@@ -36,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
           console.log(data);
           console.log(formObject);
-          window.location.href = "payment.html";
+          window.location.href = "employeedetails.html";
         })
         .catch(error => {
           console.log('Error:', error);

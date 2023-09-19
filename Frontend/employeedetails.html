@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkyWings Airlines </title>
+    <link type="image/png" sizes="16x16" rel="icon" href="icons8-flight-16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="employeedetails.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">SkyWings Airlines </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Enter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="view.html">View</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="delete.html">Delete</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="update.html">Update</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search.html">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="viewfulldata.html">View Full Data</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="masthead2" style="background-image: url('airplane.jpg');">
+    <div class="color-overlay d-flex justify-content-center align-items-center"> 
+      <div class="container">
+      <h1 class="text-center">Enter Employee Information</h1>
+    <form class="row g-3">
+      <div class="col-12"></div>
+      <div class="col-12"></div>
+      <div class="col-12"></div>
+      <div class="col-md-6">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-select" id="role" name="role">
+          <option selected></option>
+          <option value="pilot">Pilot</option>
+          <option value="flight_attendant">Flight Attendant</option>
+          <option value="mechanic">Mechanic</option>
+          <option value="air_traffic_controller">Air Traffic Controller</option>
+          <option value="ground_crew">Ground Crew</option>
+
+        </select>
+      </div>
+      
+      <!-- <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Destination</label>
+        <input type="text" class="form-control" id="destination" name="destination">
+      </div> -->
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location">
+      </div>
+      
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Date Of Joining</label>
+        <input type="date" id="dateofjoining" name="dateofjoining" class="form-control">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Years of Experience</label>
+        <input type="text" class="form-control" id="yearsofexperience" name="yearsofexperience">
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Salary</label>
+        <input type="text" class="form-control" id="salary" name="salary">
+    </div>
+    <div class="col-md-6">
+        <label for="isFullTime" class="form-label">Full Time</label>
+        <select class="form-select" id="isFullTime" name="isFullTime">
+            <option selected></option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+     
+      
+<!--       
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Date Of Joining</label>
+        <input type="date" id="dob" name="date_of_joining" class="form-control">
+      </div>
+     <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Years of Experience</label>
+        <input type="text" class="form-control" id="firstname" name="years_of_experience" >
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Salary</label>
+        <input type="text" id="dob" name="salary" class="form-control">
+      </div>
+      <div class="col-md-6">
+        <label for="role" class="form-label">Full Time</label>
+        <select class="form-select" id="role" name="isFullTime">
+          <option selected></option>
+          <option value="Full Time">Yes</option>
+          <option value="Part Time">No</option>
+          
+        </select>
+      
+     </div> -->
+     
+      <div class="form-floating abc">
+        <h6>Relevant Certifications</h6>
+        <textarea class="form-control" placeholder="Leave a comment here" id="relevantcertifications" name="relevantcertifications"></textarea>
+        <label for="floatingTextarea"></label>
+      </div>
+     
+      <div class="col-12 text-end">
+ 
+        <button type="submit" class="btn btn-primary">submit</button>
+    
+        
+      </div>
+       
+    </form>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+      
+    </script>
+   
+  </body>
+</html>
