@@ -9,6 +9,7 @@ import com.example.demo.Repo.UserEmployeeCombinedRepository;
 import com.example.demo.Repo.UserRepo;
 //import com.example.demo.consumer.MessageDatabase;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -153,13 +154,6 @@ public class Apicontrollers {
         employeeRepo.delete(Employee);
         return "Deleted";
     }
-//    @RequestMapping(method = RequestMethod.GET, value = "/api/simplifyingtech")
-//    public String getRequest() {
-//        return "Swagger Hello World from Spring...";
-//    }
-//
-//    @PostMapping("/api/posts")
-//    public String postRequest(@RequestBody String yourName) {
-//        return "Hello " + yourName;
-//    }
+
+
 }
