@@ -78,6 +78,9 @@ public class UserEmployeeService {
 
         userEmployeeCombinedRepository.saveAll(userEmployeeList);
     }
+    public void deleteUserById(Long id) {
+        userEmployeeCombinedRepository.deleteById(id);
+    }
     public List<UserEmployeeCombined> getAllUserEmployeeData() {
         return userEmployeeCombinedRepository.findAll();
     }

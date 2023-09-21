@@ -43,7 +43,7 @@
     <div class="masthead1" style="background-image: url('airplane.jpg');">
     <div class="color-overlay d-flex justify-content-center align-items-center"> 
       <div class="container">
-      <h1 class="text-center">Student Update Data</h1>
+      <h1 class="text-center">Employee Update Data</h1>
       
     <form class="row g-3" id="updateform">
       <div class="col-12"></div>
@@ -113,6 +113,27 @@
       <div class="col-12">
         <label for="inputAddress2" class="form-label">Address </label>
         <input type="text" class="form-control" id="inputAddress" name="address">
+      </div>
+      <div class="col-md-6">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-select" id="role" name="role">
+          <option selected></option>
+          <option value="pilot">Pilot</option>
+          <option value="flight_attendant">Flight Attendant</option>
+          <option value="mechanic">Mechanic</option>
+          <option value="air_traffic_controller">Air Traffic Controller</option>
+          <option value="ground_crew">Ground Crew</option>
+
+        </select>
+      </div>
+      
+      <!-- <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Destination</label>
+        <input type="text" class="form-control" id="destination" name="destination">
+      </div> -->
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location">
       </div>
       <div class="col-md-6">
         <label for="inputCity" class="form-label">City</label>

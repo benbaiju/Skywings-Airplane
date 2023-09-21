@@ -22,8 +22,10 @@ $(document).ready(function() {
             // Define an array with the field names
             var fields = [
                 'id', 'suffix', 'firstname', 'middlename', 'lastname', 'gender',
-                'dob', 'number', 'email', 'address', 'city', 'state', 'zip',
-                'role', 'location', 'comments', 'dateOfJoining', 'yearsOfExperience',
+                // 'dob', 'number', 'email', 'address', 'city', 'state', 'zip',
+                //'role', 'location', 
+                //'comments', 
+                'dateOfJoining', 'yearsOfExperience',
                 'relevantCertifications', 'employeeRole', 'employeeLocation', 'salary', 'isFullTime'
             ];
         

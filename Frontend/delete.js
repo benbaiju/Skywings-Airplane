@@ -56,3 +56,8 @@ $(document).ready(function() {
  
     fetchData();
 });
+
+document.getElementById('DeleteEmployeeDetails').addEventListener('click', function() {
+
+    window.location.href = 'deleteemployeedetails.html';
+});

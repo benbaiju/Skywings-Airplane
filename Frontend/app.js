@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
         city: form.city.value,
         state: form.state.value,
         zip: form.zip.value,
-        comments: form.comments.value
+        comments: form.comments.value,
+        role: form.role.value,     
+        location: form.location.value 
       };
   
       const apiUrl = 'http://localhost:8080/save';

@@ -1,6 +1,9 @@
 package com.example.demo.Models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,27 +15,81 @@ public class EmployeeInformation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "eid")
     private Long eid; // Primary key for EmployeeInformation
+//
+//    @Column(name = "date_of_joining")
+//    @NotNull(message = "Date of joining is required")
+//    private LocalDate dateOfJoining;
+//
+//    @Column(name = "years_of_experience")
+//    @NotBlank(message = "Years of experience is required")
+//    private String yearsOfExperience;
+//
+//    @Column(name = "relevant_certifications")
+//    private String relevantCertifications;
+//
+//    @Column(name = "role")
+//    @NotBlank(message = "Role is required")
+//    private String role;
+//
+//    @Column(name = "location")
+//    @NotBlank(message = "Location is required")
+//    private String location;
+//
+//    @Column(name = "salary")
+//    @Min(value = 0, message = "Salary must be a positive number")
+//    private double salary;
+//
+//    @Column(name = "is_full_time")
+//    @NotBlank(message = "Full-time status is required")
+//    private String isFullTime;
 
     @Column(name = "date_of_joining")
+    @NotNull(message = "Date of joining is required")
     private LocalDate dateOfJoining;
 
     @Column(name = "years_of_experience")
+    @NotBlank(message = "Years of experience is required")
     private String yearsOfExperience;
 
     @Column(name = "relevant_certifications")
     private String relevantCertifications;
 
-    @Column(name = "role") // Field name matches the column name
+    @Column(name = "role")
+    @NotBlank(message = "Role is required")
     private String role;
 
-    @Column(name = "location") // Field name matches the column name
+    @Column(name = "location")
+    @NotBlank(message = "Location is required")
     private String location;
 
-    @Column(name = "salary") // Field name matches the column name
+    @Column(name = "salary")
+    @Min(value = 0, message = "Salary must be a positive number")
     private double salary;
 
-    @Column(name = "is_full_time") // Field name matches the column name
+    @Column(name = "is_full_time")
+    @NotBlank(message = "Full-time status is required")
     private String isFullTime;
+
+//    @Column(name = "date_of_joining")
+//    private LocalDate dateOfJoining;
+//
+//    @Column(name = "years_of_experience")
+//    private String yearsOfExperience;
+//
+//    @Column(name = "relevant_certifications")
+//    private String relevantCertifications;
+//
+//    @Column(name = "role") // Field name matches the column name
+//    private String role;
+//
+//    @Column(name = "location") // Field name matches the column name
+//    private String location;
+//
+//    @Column(name = "salary") // Field name matches the column name
+//    private double salary;
+//
+//    @Column(name = "is_full_time") // Field name matches the column name
+//    private String isFullTime;
 
 //    @OneToOne
 //    @JoinColumn(name="eid")

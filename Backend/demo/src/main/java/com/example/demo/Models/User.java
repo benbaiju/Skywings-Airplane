@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -11,54 +12,123 @@ import java.time.LocalDate;
 @Table(name = "user")
 public class User implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
+//
+//    @Column(name = "suffix")
+//    private String suffix;
+//
+//    @Column(name = "firstname")
+//    private String firstname;
+//
+//    @Column(name = "middlename")
+//    private String middlename;
+//
+//    @Column(name = "lastname")
+//    private String lastname;
+//
+//    @Column(name = "gender")
+//    private String gender;
+//
+//    @Column(name="dob")
+//    private LocalDate dob;
+//
+//    @Column(name = "role")
+//    private String role;
+//
+//    @Column(name = "location")
+//    private String location;
+//
+//    @Column(name = "number")
+//    private String number;
+//
+//    @Column(name = "email")
+//    private String email;
+//
+//    @Column(name = "address")
+//    private String address;
+//
+//    @Column(name = "city")
+//    private String city;
+//
+//    @Column(name = "state")
+//    private String state;
+//
+//    @Column(name = "zip")
+//    private String zip;
+//
+//    @Column(name = "comments")
+//    private String comments;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id;
 
-    @Column(name = "suffix")
+    @NotBlank(message = "Suffix is required")
+    @Size(max = 10, message = "Suffix must be at most 10 characters")
     private String suffix;
 
-    @Column(name = "firstname")
+    @NotBlank(message = "First name is required")
+    @Size(max = 50, message = "First name must be at most 50 characters")
     private String firstname;
 
-    @Column(name = "middlename")
+    @Size(max = 50, message = "Middle name must be at most 50 characters")
     private String middlename;
 
-    @Column(name = "lastname")
+    @NotBlank(message = "Last name is required")
+    @Size(max = 50, message = "Last name must be at most 50 characters")
     private String lastname;
 
-    @Column(name = "gender")
+    @NotBlank(message = "Gender is required")
+    @Pattern(regexp = "^(Male|Female|Other)$", message = "Invalid gender")
     private String gender;
 
-    @Column(name="dob")
+    @NotNull(message = "Date of birth is required")
+    @Past(message = "Date of birth must be in the past")
     private LocalDate dob;
 
-    @Column(name = "role")
+    @NotBlank(message = "Role is required")
+    @Size(max = 50, message = "Role must be at most 50 characters")
     private String role;
 
-    @Column(name = "location")
+    @NotBlank(message = "Location is required")
+    @Size(max = 100, message = "Location must be at most 100 characters")
     private String location;
 
-    @Column(name = "number")
+    @NotBlank(message = "Number is required")
+    @Size(max = 20, message = "Number must be at most 20 characters")
     private String number;
 
-    @Column(name = "email")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
+    @Size(max = 100, message = "Email must be at most 100 characters")
     private String email;
 
-    @Column(name = "address")
+    @NotBlank(message = "Address is required")
+    @Size(max = 100, message = "Address must be at most 100 characters")
     private String address;
 
-    @Column(name = "city")
+    @NotBlank(message = "City is required")
+    @Size(max = 50, message = "City must be at most 50 characters")
     private String city;
 
-    @Column(name = "state")
+    @NotBlank(message = "State is required")
+    @Size(max = 50, message = "State must be at most 50 characters")
     private String state;
 
-    @Column(name = "zip")
+    @NotBlank(message = "ZIP code is required")
+    @Pattern(regexp = "^\\d{6}$", message = "Invalid ZIP code format (must be 5 digits)")
     private String zip;
 
-    @Column(name = "comments")
+    @Size(max = 200, message = "Comments must be at most 200 characters")
     private String comments;
+
+    // Getters and setters...
+
+    // Other methods...
+
+
+
 
 //    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
 //    @PrimaryKeyJoinColumn

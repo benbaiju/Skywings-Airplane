@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("SKyWings API Documentation")
+                .title("SkyWings API Documentation")
                 .description("Swagger for SkyWings API")
                 .version("1.0")
                 .build();
