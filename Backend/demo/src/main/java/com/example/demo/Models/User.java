@@ -12,54 +12,6 @@ import java.time.LocalDate;
 @Table(name = "user")
 public class User implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long id;
-//
-//    @Column(name = "suffix")
-//    private String suffix;
-//
-//    @Column(name = "firstname")
-//    private String firstname;
-//
-//    @Column(name = "middlename")
-//    private String middlename;
-//
-//    @Column(name = "lastname")
-//    private String lastname;
-//
-//    @Column(name = "gender")
-//    private String gender;
-//
-//    @Column(name="dob")
-//    private LocalDate dob;
-//
-//    @Column(name = "role")
-//    private String role;
-//
-//    @Column(name = "location")
-//    private String location;
-//
-//    @Column(name = "number")
-//    private String number;
-//
-//    @Column(name = "email")
-//    private String email;
-//
-//    @Column(name = "address")
-//    private String address;
-//
-//    @Column(name = "city")
-//    private String city;
-//
-//    @Column(name = "state")
-//    private String state;
-//
-//    @Column(name = "zip")
-//    private String zip;
-//
-//    @Column(name = "comments")
-//    private String comments;
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private long id;
@@ -123,19 +75,6 @@ private long id;
     @Size(max = 200, message = "Comments must be at most 200 characters")
     private String comments;
 
-    // Getters and setters...
-
-    // Other methods...
-
-
-
-
-//    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn
-//    private EmployeeInformation employee;
-
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private EmployeeInformation employeeInformation;
 
     public User() {
     }

@@ -44,19 +44,18 @@ data.forEach(function(item) {
 });
 
 
-            // Create a data URI for the CSV content
+          
             var encodedUri = encodeURI(csvContent);
 
-            // Create a hidden anchor element to trigger the download
+           
             var link = document.createElement('a');
             link.setAttribute('href', encodedUri);
             link.setAttribute('download', 'data.csv');
             document.body.appendChild(link);
 
-            // Trigger the click event to initiate the download
             link.click();
 
-            // Remove the anchor element
+           
             document.body.removeChild(link);
         }
     }

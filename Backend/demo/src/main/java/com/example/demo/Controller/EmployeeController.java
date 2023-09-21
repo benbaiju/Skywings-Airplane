@@ -1,49 +1,79 @@
-//package com.example.demo.Controller;
-//
-//import com.example.demo.Models.EmployeeInformation;
-//import com.example.demo.Models.User;
-//import com.example.demo.Repo.EmployeeInformationRepo;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.jms.core.JmsTemplate;
-//import org.springframework.web.bind.annotation.CrossOrigin;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@CrossOrigin
-//@RestController
-//public class EmployeeController {
-//
-//    @Autowired
-//    private EmployeeInformationRepo employeeRepo;
-//
-//
-//    @Autowired
-//    private JmsTemplate jmsTemplate;
-//
-//
-//    public EmployeeController(JmsTemplate jmsTemplate) {
-//        this.jmsTemplate = jmsTemplate;
-//    }
-//
-//    @CrossOrigin
-//    @PostMapping(value = "/saveemployee", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<String> saveUser(@RequestBody EmployeeInformation user) {
-//        try {
-//
-//            //jmsTemplate.convertAndSend("DataQueue", user);
-////            jmsTemplate.convertAndSend(dataQueueName, user);
-//
-//            employeeRepo.save(user);
-//            return ResponseEntity.ok("{\"message\": \"User saved successfully\"}");
-////
-////            //return new ResponseEntity<>("Sent.", HttpStatus.OK);
-//
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-//}
+package com.example.demo.Controller;
+
+import com.example.demo.Models.EmployeeInformation;
+import com.example.demo.Models.UserEmployeeCombined;
+import com.example.demo.Publish.PublishController;
+import com.example.demo.Repo.EmployeeInformationRepo;
+import com.example.demo.Repo.UserEmployeeCombinedRepository;
+import com.example.demo.Repo.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
+import java.util.List;
+
+@CrossOrigin
+@RestController
+public class EmployeeController implements EmployeeInterface {
+    @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
+    private EmployeeInformationRepo employeeRepo;
+
+
+    @Autowired
+    private PublishController publishController;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Autowired
+    private UserEmployeeCombinedRepository repository;
+
+    @Autowired
+    private UserEmployeeService userEmployeeService;
+
+    public EmployeeController(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+
+
+    @PutMapping(value = "updateEmployee/{id}")
+    public String updateEmployee(@PathVariable long id, @RequestBody EmployeeInformation employeeInfo) {
+        EmployeeInformation updatedEmployee = employeeRepo.findById(id).get();
+
+        updatedEmployee.setDateOfJoining(employeeInfo.getDateOfJoining());
+        updatedEmployee.setYearsOfExperience(employeeInfo.getYearsOfExperience());
+        updatedEmployee.setRelevantCertifications(employeeInfo.getRelevantCertifications());
+        updatedEmployee.setRole(employeeInfo.getRole());
+        updatedEmployee.setLocation(employeeInfo.getLocation());
+        updatedEmployee.setSalary(employeeInfo.getSalary());
+        updatedEmployee.setIsFullTime(employeeInfo.getIsFullTime());
+        updateUserEmployee(id,employeeInfo);
+        employeeRepo.save(updatedEmployee);
+        return "Employee updated";
+    }
+    public String updateUserEmployee(@PathVariable long id, @RequestBody EmployeeInformation employeeInfo) {
+
+        UserEmployeeCombined userEmployee = repository.findById(id).get();
+        userEmployee .setDateOfJoining(employeeInfo.getDateOfJoining());
+        userEmployee .setYearsOfExperience(employeeInfo.getYearsOfExperience());
+        userEmployee .setRelevantCertifications(employeeInfo.getRelevantCertifications());
+        userEmployee .setEmployeeRole(employeeInfo.getRole());
+        userEmployee .setEmployeeLocation(employeeInfo.getLocation());
+        userEmployee .setSalary(employeeInfo.getSalary());
+        userEmployee .setIsFullTime(employeeInfo.getIsFullTime());
+
+        repository.save(userEmployee );
+        return "Employee updated";
+    }
+
+    @GetMapping(value="/employeeusers")
+    public List<EmployeeInformation> getEmployeeInformation(){
+        return employeeRepo.findAll();
+    }
+
+}

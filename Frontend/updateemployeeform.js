@@ -7,16 +7,6 @@ $(document).ready(function () {
         event.preventDefault();
        
   
-        //Create a formObject to store updated employee information
-        // const formObject = {
-        //     role: $("#role").val(),
-        //     location: $("#location").val(),
-        //     dateOfJoining: $("#dateOfjoining").val(),
-        //     yearsOfExperience: $("#yearsOfexperience").val(),
-        //     salary: parseFloat($("#salary").val()),
-        //     isFullTime: $("#isFullTime").val(),
-        //     relevantCertifications: $("#relevantCertifications").val(),
-        // };
         
         const form = document.querySelector('form');
       const formData = new FormData(form);
@@ -26,7 +16,6 @@ $(document).ready(function () {
       })
         console.log(formObject);
   
-        // Define the API URL for updating employee information
         const apiUrl = 'http://localhost:8080/updateEmployee'+'/' + selectedItemId;
   
         $.ajax({
@@ -36,8 +25,7 @@ $(document).ready(function () {
             data: JSON.stringify(formObject),
             success: function () {
                 alert("Employee data updated successfully.");
-                // Redirect or perform other actions after successful update
-                // window.location.href = 'redirect-page.html';
+                
             },
             error: function () {
                 alert("Error updating employee data.");

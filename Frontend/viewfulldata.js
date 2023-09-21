@@ -19,17 +19,14 @@ $(document).ready(function() {
         if (data.length > 0) {
             var tableHtml = '<table class="table"><thead><tr>';
             
-            // Define an array with the field names
+            
             var fields = [
                 'id', 'suffix', 'firstname', 'middlename', 'lastname', 'gender',
-                // 'dob', 'number', 'email', 'address', 'city', 'state', 'zip',
-                //'role', 'location', 
-                //'comments', 
+               
                 'dateOfJoining', 'yearsOfExperience',
                 'relevantCertifications', 'employeeRole', 'employeeLocation', 'salary', 'isFullTime'
             ];
         
-            // Dynamically generate table headers based on field names
             fields.forEach(function(field) {
                 tableHtml += '<th>' + field + '</th>';
             });
@@ -39,7 +36,7 @@ $(document).ready(function() {
             data.forEach(function(item) {
                 tableHtml += '<tr>';
                 
-                // Dynamically generate table data based on field names
+              
                 fields.forEach(function(field) {
                     tableHtml += '<td>' + item[field] + '</td>';
                 });
@@ -71,19 +68,18 @@ data.forEach(function(item) {
 });
 
 
-            // Create a data URI for the CSV content
+            
             var encodedUri = encodeURI(csvContent);
 
-            // Create a hidden anchor element to trigger the download
+         
             var link = document.createElement('a');
             link.setAttribute('href', encodedUri);
             link.setAttribute('download', 'data.csv');
             document.body.appendChild(link);
 
-            // Trigger the click event to initiate the download
+            
             link.click();
 
-            // Remove the anchor element
             document.body.removeChild(link);
         }
     }

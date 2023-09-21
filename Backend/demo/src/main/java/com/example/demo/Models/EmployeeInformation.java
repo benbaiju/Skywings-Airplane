@@ -15,33 +15,6 @@ public class EmployeeInformation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "eid")
     private Long eid; // Primary key for EmployeeInformation
-//
-//    @Column(name = "date_of_joining")
-//    @NotNull(message = "Date of joining is required")
-//    private LocalDate dateOfJoining;
-//
-//    @Column(name = "years_of_experience")
-//    @NotBlank(message = "Years of experience is required")
-//    private String yearsOfExperience;
-//
-//    @Column(name = "relevant_certifications")
-//    private String relevantCertifications;
-//
-//    @Column(name = "role")
-//    @NotBlank(message = "Role is required")
-//    private String role;
-//
-//    @Column(name = "location")
-//    @NotBlank(message = "Location is required")
-//    private String location;
-//
-//    @Column(name = "salary")
-//    @Min(value = 0, message = "Salary must be a positive number")
-//    private double salary;
-//
-//    @Column(name = "is_full_time")
-//    @NotBlank(message = "Full-time status is required")
-//    private String isFullTime;
 
     @Column(name = "date_of_joining")
     @NotNull(message = "Date of joining is required")

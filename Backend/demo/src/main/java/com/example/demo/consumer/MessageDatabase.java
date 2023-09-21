@@ -13,8 +13,6 @@ import com.example.demo.Models.User;
 public class MessageDatabase {
     @Autowired
     private UserRepo userRepo;
-//    @Value("${activemq.queue.name}")
-//    private String dataQueueName;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageDatabase.class);
 

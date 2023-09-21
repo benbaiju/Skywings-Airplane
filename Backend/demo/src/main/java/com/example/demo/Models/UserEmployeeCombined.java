@@ -11,7 +11,6 @@ public class UserEmployeeCombined {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Fields from the User class
     private String suffix;
     private String firstname;
     private String middlename;
@@ -28,19 +27,19 @@ public class UserEmployeeCombined {
     private String zip;
     private String comments;
 
-    // Fields from the EmployeeInformation class
+
     private LocalDate dateOfJoining;
     private String yearsOfExperience;
     private String relevantCertifications;
-    private String employeeRole; // Renamed to avoid conflict with User's 'role' field
-    private String employeeLocation; // Renamed to avoid conflict with User's 'location' field
+    private String employeeRole;
+    private String employeeLocation;
     private double salary;
     private String isFullTime;
 
     public UserEmployeeCombined() {
     }
 
-    // Getters and setters for all fields
+
 
     public Long getId() {
         return id;
