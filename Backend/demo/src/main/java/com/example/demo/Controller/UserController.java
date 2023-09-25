@@ -47,6 +47,7 @@ public class UserController implements UserInterface,EmployeeInterfaceData {
         this.jmsTemplate = jmsTemplate;
     }
 
+
     @GetMapping(value="/users")
     public List<User> getUser(){
         return userRepo.findAll();

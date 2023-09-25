@@ -3,6 +3,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const selectedItemId = urlParams.get('id');
     console.log(selectedItemId);
+    
   
     
     $("#updateform").submit(function (event) {
@@ -14,6 +15,7 @@ $(document).ready(function () {
       formData.forEach((value, key) => {
         formObject[key] = value;
       });
+      
   
       $.ajax({
         url: 'http://localhost:8080/update' + '/' + selectedItemId,

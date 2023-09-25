@@ -27,6 +27,7 @@ $(document).ready(function() {
 
     function displayData(data) {
         var dataContainer = $('#dataContainer');
+        var downloadCsvContainer = $('#downloadCsv');
         if (data.length > 0) {
             var tableHtml = '<table class="table"><thead><tr><th>ID</th><th>Suffix</th><th>First Name</th><th>Middle Name</th><th>Last Name</th><th>Gender</th><th>Date of Birth</th><th>Phone Number</th><th>Email</th><th>Address</th><th>City</th><th>State</th><th>Zip</th><th>role</th><th>location</th><th>Comments</th></tr></thead><tbody>';
             data.forEach(function(item) {
@@ -35,8 +36,12 @@ $(document).ready(function() {
             tableHtml += '</tbody></table>';
 
             dataContainer.html(tableHtml);
+            alert("Data Found");
+            downloadCsvContainer.show();
         } else {
             dataContainer.html('<p>No data available.</p>');
+            alert("No such Data exists");
+            downloadCsvContainer.hide();
         }
 
 

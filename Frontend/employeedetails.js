@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
       isFullTime: form.isFullTime.value,
       relevantCertifications: form.relevantcertifications.value, 
     };
+    alert('Details entered and send to Database');
 
   
     const apiUrl = 'http://localhost:8080/saveemployee';

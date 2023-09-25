@@ -8,14 +8,17 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             displayData(data);
+            alert("API call Successfull");
         },
         error: function(error) {
             console.error('Error fetching data:', error);
+            alert("API call Unsuccessfull");
         }
     });
 
     function displayData(data) {
         var dataContainer = $('#dataContainer');
+        var downloadCsvContainer = $('#downloadCsv');
         if (data.length > 0) {
             var tableHtml = '<table class="table"><thead><tr>';
             
@@ -48,8 +51,10 @@ $(document).ready(function() {
         
 
             dataContainer.html(tableHtml);
+            downloadCsvContainer.show();
         } else {
             dataContainer.html('<p>No data available.</p>');
+            downloadCsvContainer.hide();
         }
 
         $('#downloadCsv').click(function() {

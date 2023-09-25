@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         role: form.role.value,     
         location: form.location.value 
       };
+      alert('Details entered and send to Database');
   
       const apiUrl = 'http://localhost:8080/save';
       console.log('Sending data to:', apiUrl);

@@ -8,14 +8,17 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             displayData(data);
+            alert("API call successfull");
         },
         error: function(error) {
             console.error('Error fetching data:', error);
+            alert("API call Unsuccessfull");
         }
     });
 
     function displayData(data) {
         var dataContainer = $('#dataContainer');
+        var downloadCsvContainer = $('#downloadCsv');
 
 if (data.length > 0) {
     var tableHtml = '<table class="table"><thead><tr><th>ID</th><th>Date of Joining</th><th>Years of Experience</th><th>Relevant Certifications</th><th>Role</th><th>Location</th><th>Salary</th><th>Is Full Time</th></tr></thead><tbody>';
@@ -26,8 +29,10 @@ if (data.length > 0) {
 
 
             dataContainer.html(tableHtml);
+            downloadCsvContainer.show();
         } else {
             dataContainer.html('<p>No data available.</p>');
+            downloadCsvContainer.hide();
         }
 
         $('#downloadCsv').click(function() {

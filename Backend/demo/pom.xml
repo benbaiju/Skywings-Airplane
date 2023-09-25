@@ -56,13 +56,39 @@
 <!--			<groupId>javax.validation</groupId>-->
 <!--			<artifactId>validation-api</artifactId>-->
 <!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.datatype</groupId>-->
+<!--			<artifactId>jackson-datatype-jsr310</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.junit.jupiter</groupId>-->
+<!--			<artifactId>junit-jupiter-api</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.mockito</groupId>-->
+<!--			<artifactId>mockito-core</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.7.0</version> <!-- or a more recent version -->
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 

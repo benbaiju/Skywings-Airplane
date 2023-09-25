@@ -44,6 +44,7 @@ $(document).ready(function() {
             method: 'DELETE',
             success: function(response) {
                 console.log('Item deleted:', response);
+                alert("Data Deleted");
   
                 fetchData();
             },
